@@ -6,7 +6,7 @@ const tasks = ref([])
 
 function addTask() {
     if (newTask.value.trim() !== '') {
-        tasks.value.push({
+        tasks.value.unshift({
             text: newTask.value,
             date: Date().toLocaleString()
         })
@@ -44,7 +44,6 @@ function removeTask(index) {
                         <div
                             class="d-flex justify-content-between rounded p-2 align-content-center m-4 bg-info">
                             <span class="fw-bold">{{ task.text }} </span>
-                            <small class="text-muted">{{task.date}}</small>
                             <button class="btn btn-light" @click="removeTask(index)">🗑</button>
                         </div>
                     </li>
@@ -58,7 +57,9 @@ function removeTask(index) {
 
 <style scoped>
 span{
+    flex: 1;
     word-wrap: break-word;
     white-space: normal;
+    overflow-wrap: anywhere;
 }
 </style>
